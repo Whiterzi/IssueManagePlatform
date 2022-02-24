@@ -32,8 +32,8 @@ const Navbar = () => {
       <div id="Navbar">
 
         <div id="navleft">
-          <img src={require('../imgs/Ellipse 10.png')} alt="ellipse" id="Navbarlogo"></img>
-          <p id="NavbarlogoText" style={colorswitch}>LOGO</p>
+          <img src={require('../imgs/GreenMatchICON.png')} alt="ellipse" id="Navbarlogo"></img>
+          {/* <p id="NavbarlogoText" style={colorswitch}>LOGO</p> */}
         </div>
   
         <div id="navright" style={colorswitch}>

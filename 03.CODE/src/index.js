@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import MainPage from './pages/MainPage/Mainpage';
 import GreenMatchList from './pages/GreenMatchList/GreenMatchList.component';
 
+
 ReactDOM.render(
-  <MainPage />,
+  <GreenMatchList />,
   document.getElementById('root')
 );
 

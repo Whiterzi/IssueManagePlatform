@@ -34,13 +34,14 @@ code {
   width: 65%;
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
-#Navbar #navleft #Navbarlogo {
+/* #Navbar #navleft #Navbarlogo {
   width: 40px;
   height: 40px;
   margin-left: 1%;
-}
+} */
 
 #Navbar #navleft #NavbarlogoText {
   margin-left: 1%;
