@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MainPage from './pages/MainPage/Mainpage';
+import GreenMatchList from './pages/GreenMatchList/GreenMatchList.component';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <MainPage />,
   document.getElementById('root')
 );
 
