@@ -91,6 +91,20 @@ $navbar-color : #B5CDA3 ;
                     width: 40%;
                     height: 100%;
                     background-color: aliceblue;
+                    display: flex;
+                    justify-content: center;
+                    #scrollpanel{
+                        width: 95%;
+                        height: 100%;
+                        border: 1px solid;
+                        #body-list-card{
+                            margin: auto;
+                            margin-top: 10px;
+                            width: 98%;
+                            height: 300px;
+                            background-color: #707070;
+                        }
+                    }
                 }
             }
         }

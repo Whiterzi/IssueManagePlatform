@@ -4,7 +4,8 @@ import Navbar from "../../components/Navigationbar";
 import Searchbar from "../../components/Searchbar";
 import DivSwitch from "../../components/Divswitch";
 import Sidebar from "../../components/Sidebar";
-
+import { ScrollPanel } from 'primereact/scrollpanel';
+import Scrollcard from "../../components/Scrollcard";
 
 
 
@@ -39,7 +40,9 @@ const GreenMatchList = ()=>{
                     <div id="frame-body-container">
                         <div id="frame-body-map"></div>
                         <div id="frame-body-list">
-                            
+                            <ScrollPanel id="scrollpanel">
+                                <Scrollcard />
+                            </ScrollPanel>
                         </div>
                     </div>
                 </div>
