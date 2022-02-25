@@ -2,6 +2,9 @@ import React from "react";
 import './GreenMatchList.component.scss';
 import Navbar from "../../components/Navigationbar";
 import Searchbar from "../../components/Searchbar";
+import DivSwitch from "../../components/Divswitch";
+
+
 
 
 const GreenMatchList = ()=>{
@@ -13,9 +16,15 @@ const GreenMatchList = ()=>{
             <div id="frame-parent">
                 <div id="frame-head">
                      <div id="filter-container">
+                        <div>
                         { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
                          <a id="filter" href="#">篩選條件:</a>
+                         <div id="finding-switch">
+                             <DivSwitch />
+                         </div>
+                        </div>
                      </div>
+                     
 
                     <div id="carbonfoot">
                         <div>

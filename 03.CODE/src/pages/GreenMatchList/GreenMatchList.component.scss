@@ -9,11 +9,14 @@ $navbar-color : #B5CDA3 ;
     justify-content: center;
     align-items: center;
     #frame-parent{
-        width: 90%;
+        width: 100%;
         height: 95%;
         padding-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         #frame-head{
-            width: 102%;
+            width: 90%;
             height: 15%;
             display: flex;
             #filter-container{
@@ -27,7 +30,30 @@ $navbar-color : #B5CDA3 ;
                     text-decoration: underline;
                     font-size: 20px;
                     position: absolute;
-                    bottom: 0;
+                    bottom: 40px;
+                }
+                #finding-switch{
+                    width: 220px;
+                    font-size: 20px;
+                    margin-left: 10px;
+                    position: absolute;
+                    bottom: 5px;
+                    height: 30px;
+                    #switch-container{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-around;
+                        #sale , #purchase{
+                            width: 100px;
+                            height: 100%;
+                            text-align: center;
+                            border-radius: 10px;
+                            color: #707070;
+                            user-select: none;
+                        }
+                        
+                    }
                 }
             }
             #carbonfoot{
@@ -48,7 +74,7 @@ $navbar-color : #B5CDA3 ;
         #frame-body{
             border-top: 1px solid gray;
             padding-top: 8px;
-            width: 100%;
+            width: 90%;
             height: 85%;
             display: flex;
             #frame-body-map{
@@ -73,3 +99,5 @@ $navbar-color : #B5CDA3 ;
     height: 50px;
     background-color: $navbar-color ;
 }
+
+
