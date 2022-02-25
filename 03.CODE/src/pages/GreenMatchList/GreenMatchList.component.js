@@ -3,6 +3,8 @@ import './GreenMatchList.component.scss';
 import Navbar from "../../components/Navigationbar";
 import Searchbar from "../../components/Searchbar";
 import DivSwitch from "../../components/Divswitch";
+import Sidebar from "../../components/Sidebar";
+
 
 
 
@@ -24,8 +26,6 @@ const GreenMatchList = ()=>{
                          </div>
                         </div>
                      </div>
-                     
-
                     <div id="carbonfoot">
                         <div>
                             <img src={require('../../imgs/CarbonFoot.png')} alt="foot" />
@@ -35,8 +35,13 @@ const GreenMatchList = ()=>{
 
                 </div>
                 <div id="frame-body">
-                    <div id="frame-body-map"></div>
-                    <div id="frame-body-list"></div>
+                    <Sidebar />
+                    <div id="frame-body-container">
+                        <div id="frame-body-map"></div>
+                        <div id="frame-body-list">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

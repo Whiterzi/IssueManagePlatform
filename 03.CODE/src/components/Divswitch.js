@@ -7,7 +7,7 @@ import React , {useState} from "react";
 
 const DivSwitch = ()=>{
     // s = Sale , p = Purchase
-    const [CurrentDivPosition, setPosition] = useState(5);
+    const [CurrentDivPosition, setPosition] = useState("Init");
 
     const selectedStyle = 
     {
@@ -18,12 +18,14 @@ const DivSwitch = ()=>{
         width : '100px',
         position : 'absolute',
         zIndex : '-1',
-        left : CurrentDivPosition+'px'
+        left : (CurrentDivPosition==="Init" ? 5 :(CurrentDivPosition==="s"?5:115))+'px',
+        animationName : (CurrentDivPosition==="Init"? 'n' : (CurrentDivPosition==="s"?'purchase-to-sale' : 'sale-to-purchase')),
+        animationDuration : '.5s',
     }
-    console.log(selectedStyle)
+
     
-    const onDivSelect = ()=>{
-        
+    const onDivSelect = (e)=>{
+        e.target.id === "sale" ? setPosition("s") : setPosition("p")
     }
     
 
