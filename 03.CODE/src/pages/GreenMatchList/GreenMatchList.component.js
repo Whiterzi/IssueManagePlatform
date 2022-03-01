@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import './GreenMatchList.component.scss';
 import Navbar from "../../components/Navigationbar";
 import Searchbar from "../../components/Searchbar";
@@ -11,6 +11,10 @@ import Scrollcard from "../../components/Scrollcard";
 
 
 const GreenMatchList = ()=>{
+    const [filterState , setfilterState] = useState(false)
+    const openSidebar = ()=>{
+        setfilterState(true)
+    }
     return( 
         <>
         <Navbar/>
@@ -21,9 +25,9 @@ const GreenMatchList = ()=>{
                      <div id="filter-container">
                         <div>
                         { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
-                         <a id="filter" href="#">篩選條件:</a>
+                         <a id="filter" href="#" onClick={openSidebar}>篩選條件:</a>
                          <div id="finding-switch">
-                             <DivSwitch />
+                             <DivSwitch filterState = {filterState} />
                          </div>
                         </div>
                      </div>

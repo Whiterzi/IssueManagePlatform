@@ -39,20 +39,6 @@ $navbar-color : #B5CDA3 ;
                     position: absolute;
                     bottom: 5px;
                     height: 30px;
-                    #switch-container{
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        justify-content: space-around;
-                        #sale , #purchase{
-                            width: 100px;
-                            height: 100%;
-                            text-align: center;
-                            color: #707070;
-                            user-select: none;
-                        }
-                        
-                    }
                 }
             }
             #carbonfoot{
@@ -61,13 +47,11 @@ $navbar-color : #B5CDA3 ;
                 img{
                     width: 80px;
                     height: 80px;
-
                 }
                 #searchbar{
                     height: fit-content;
                     width: fit-content;
-                }
-                
+                }   
             }
         }
         #frame-body{
@@ -90,20 +74,12 @@ $navbar-color : #B5CDA3 ;
                 #frame-body-list{
                     width: 40%;
                     height: 100%;
-                    background-color: aliceblue;
                     display: flex;
                     justify-content: center;
                     #scrollpanel{
                         width: 95%;
                         height: 100%;
                         border: 1px solid;
-                        #body-list-card{
-                            margin: auto;
-                            margin-top: 10px;
-                            width: 98%;
-                            height: 300px;
-                            background-color: #707070;
-                        }
                     }
                 }
             }
@@ -118,19 +94,3 @@ $navbar-color : #B5CDA3 ;
     height: 50px;
     background-color: $navbar-color;
 }
-
-@keyframes sale-to-purchase {
-    from{
-        left: 5px;
-    }to{
-        left: 115px;
-    }
-}
-@keyframes purchase-to-sale {
-    from{
-        left: 115px;
-    }to{
-        left: 5px;
-    }
-}
-
