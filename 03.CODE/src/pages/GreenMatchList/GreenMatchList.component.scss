@@ -24,13 +24,26 @@ $navbar-color : #B5CDA3 ;
                 height: 100%;
                 position: relative;
                 #filter{
-                    height: fit-content;
-                    margin: 10px;
-                    color: #007BFF;
-                    text-decoration: underline;
-                    font-size: 20px;
+                    width: 100%;
                     position: absolute;
                     bottom: 40px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    user-select: none;
+                    #chip-container{
+                        height: 100%;
+                        width: fit-content;
+                        margin: 10px;
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                    #filtertitle{
+                        height: fit-content;
+                        margin: 10px;
+                        color: #007BFF;
+                        text-decoration: underline;
+                        font-size: 20px;
+                    }
                 }
                 #finding-switch{
                     width: 220px;

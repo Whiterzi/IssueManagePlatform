@@ -6,15 +6,34 @@ import DivSwitch from "../../components/Divswitch";
 import Sidebar from "../../components/Sidebar";
 import { ScrollPanel } from 'primereact/scrollpanel';
 import Scrollcard from "../../components/Scrollcard";
-
+import Filterchips from "../../components/Filterchips";
 
 
 
 const GreenMatchList = ()=>{
-    const [filterState , setfilterState] = useState(false)
+    const [SidebarState , setSidebarState] = useState("Init")
     const openSidebar = ()=>{
-        setfilterState(true)
+        setSidebarState(!SidebarState)
     }
+
+    const [Filteroption , setFilteroption] = useState([]);
+    const onCheckboxChanges = (e)=>{
+        let tempFilteroption = [...Filteroption]
+        if(e.checked){
+            tempFilteroption.push(e.target.value)
+        }else{
+            tempFilteroption.splice(Filteroption.indexOf(e.value),1)
+        }
+        setFilteroption(tempFilteroption)
+    }
+    const onItemDelete = (e)=>{
+        let tempFilteroption = [...Filteroption]
+        tempFilteroption.splice(tempFilteroption.indexOf(e.target.id),1)
+        setFilteroption(tempFilteroption)
+    }
+
+    
+
     return( 
         <>
         <Navbar/>
@@ -24,10 +43,15 @@ const GreenMatchList = ()=>{
                 <div id="frame-head">
                      <div id="filter-container">
                         <div>
+                        <div id='filter'>
                         { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
-                         <a id="filter" href="#" onClick={openSidebar}>篩選條件:</a>
+                            <a id="filtertitle" href="#" onClick={openSidebar}>篩選條件:</a>
+                            <div id="chip-container">
+                                <Filterchips Filteroption={Filteroption} onItemDelete={onItemDelete} />
+                            </div>
+                        </div>
                          <div id="finding-switch">
-                             <DivSwitch filterState = {filterState} />
+                             <DivSwitch />
                          </div>
                         </div>
                      </div>
@@ -40,12 +64,12 @@ const GreenMatchList = ()=>{
 
                 </div>
                 <div id="frame-body">
-                    <Sidebar />
+                    <Sidebar  SidebarState = {SidebarState} setSidebarState = {setSidebarState} Filteroption={Filteroption} onCheckboxChanges={onCheckboxChanges} />
                     <div id="frame-body-container">
                         <div id="frame-body-map"></div>
                         <div id="frame-body-list">
                             <ScrollPanel id="scrollpanel">
-                                <Scrollcard />
+                                <Scrollcard filter={Filteroption} />
                             </ScrollPanel>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React from "react";
 import './Sidebar.scss';
 import { Dropdown } from "primereact/dropdown";
 import { Checkbox } from 'primereact/checkbox';
@@ -15,11 +15,11 @@ const sidebarNOTTriggered = {
 }
 
 
-const Sidebar = () => {
-
-    const [SidebarState , setSidebarState] = useState("Init")
+const Sidebar = (props) => {
+    // console.log(props.SidebarState)
+    
     const onTriggerChange = ()=>{
-        setSidebarState(!SidebarState)
+        props.setSidebarState(!props.SidebarState)
     }
     const dropdownWidth = {
         width:'170px'
@@ -28,14 +28,12 @@ const Sidebar = () => {
         transform:'scale(1.5)'
     }
     
-
-
     return (
         <>
-            <div style={SidebarState==="Init"? {} : (SidebarState ? sidebarNOTTriggered:sidebarTriggered)} id='sidebar-trigger' onClick={onTriggerChange} >
-                {!SidebarState ? '<' : '>'}
+            <div style={props.SidebarState==="Init"? {} : (props.SidebarState ? sidebarNOTTriggered:sidebarTriggered)} id='sidebar-trigger' onClick={onTriggerChange} >
+                {!props.SidebarState ? '<' : '>'}
             </div>
-            <div id="sidebar" style={SidebarState==="Init"? {} : (SidebarState ? sidebarNOTTriggered:sidebarTriggered)}>
+            <div id="sidebar" style={props.SidebarState==="Init"? {} : (props.SidebarState ? sidebarNOTTriggered:sidebarTriggered)}>
                 <div id="sidebar-content">
                     <div className="sidebar-title">
                         <div className="sidebar-text">地區</div>
@@ -48,27 +46,27 @@ const Sidebar = () => {
                         <div className="sidebar-text">種類</div>
                     </div>
                     <div id="sidebar-checkbox-list">
-                        <Checkbox style={chekboxsize} inputId="cbwood" value="木材"></Checkbox>
+                        <Checkbox style={chekboxsize} inputId="cbwood" value="木材" onChange={props.onCheckboxChanges} checked={props.Filteroption.includes("木材")}></Checkbox>
                         <label htmlFor="cbwood" className="p-checkbox-label">木材</label>
 
-                        <Checkbox style={chekboxsize} inputId="cbmetal" value="金屬"></Checkbox>
+                        <Checkbox style={chekboxsize} inputId="cbmetal" value="金屬" onChange={props.onCheckboxChanges} checked={props.Filteroption.includes("金屬")}></Checkbox>
                         <label htmlFor="cbmetal" className="p-checkbox-label">金屬</label>
 
-                        <Checkbox style={chekboxsize} inputId="cbdesk" value="桌椅"></Checkbox>
+                        <Checkbox style={chekboxsize} inputId="cbdesk" value="桌椅" onChange={props.onCheckboxChanges} checked={props.Filteroption.includes("桌椅")}></Checkbox>
                         <label htmlFor="cbdesk" className="p-checkbox-label">桌椅</label>
 
-                        <Checkbox style={chekboxsize} inputId="cb3c" value="3C產品"></Checkbox>
+                        <Checkbox style={chekboxsize} inputId="cb3c" value="3C產品" onChange={props.onCheckboxChanges} checked={props.Filteroption.includes("3C產品")}></Checkbox>
                         <label htmlFor="cb3c" className="p-checkbox-label">3C產品</label>
                     </div>
                     <div className="sidebar-title">
                         <div className="sidebar-text">優質商家</div>
                     </div>
                     <div id="sidebar-great-store">
-                        <Checkbox style={chekboxsize} inputId="cbgoodstore" value="優質商家"></Checkbox>
+                        <Checkbox style={chekboxsize} inputId="cbgoodstore" value="優質商家" onChange={props.onCheckboxChanges} checked={props.Filteroption.includes("優質商家")}></Checkbox>
                         <label htmlFor="cbgoodstore" className="p-checkbox-label" style={{marginLeft:'10px'}}>優質商家</label>
                     </div>
                     <div className="sidebar-title" style={{display:'flex',justifyContent:'right'}}>
-                        <Button label='搜尋' />
+                        <Button label='搜尋' onClick={onTriggerChange} />
                     </div>
                 </div>
                 
