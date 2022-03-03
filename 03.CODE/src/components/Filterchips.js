@@ -20,7 +20,6 @@ const Filterchips = (props)=>{
     
     let tempOutput = []
     props.Filteroption.forEach(element => {
-        // console.log(element)
         tempOutput.push(<Chipsgenerate itemname={element} key={element} props={props}/>)
     });
     return tempOutput

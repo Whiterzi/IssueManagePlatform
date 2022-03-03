@@ -12,11 +12,13 @@ import Filterchips from "../../components/Filterchips";
 
 const GreenMatchList = ()=>{
     const [SidebarState , setSidebarState] = useState("Init")
+    const [Filteroption , setFilteroption] = useState([]);
     const openSidebar = ()=>{
         setSidebarState(!SidebarState)
     }
 
-    const [Filteroption , setFilteroption] = useState([]);
+
+
     const onCheckboxChanges = (e)=>{
         let tempFilteroption = [...Filteroption]
         if(e.checked){
@@ -36,7 +38,7 @@ const GreenMatchList = ()=>{
 
     return( 
         <>
-        <Navbar/>
+        <Navbar borderon={false}/>
         <div id="navbar-background"></div>
         <div id="frame">
             <div id="frame-parent">
@@ -64,7 +66,12 @@ const GreenMatchList = ()=>{
 
                 </div>
                 <div id="frame-body">
-                    <Sidebar  SidebarState = {SidebarState} setSidebarState = {setSidebarState} Filteroption={Filteroption} onCheckboxChanges={onCheckboxChanges} />
+                    <Sidebar 
+                        SidebarState = {SidebarState} 
+                        setSidebarState = {setSidebarState} 
+                        Filteroption={Filteroption} 
+                        onCheckboxChanges={onCheckboxChanges}
+                     />
                     <div id="frame-body-container">
                         <div id="frame-body-map"></div>
                         <div id="frame-body-list">

@@ -5,6 +5,7 @@ import GoodStoremark from '../imgs/GoodStoreMark.png'
 import followheart from '../imgs/addfollow.png'
 
 const Infocardgenerate = (props) => {
+    const Infos = props.Info[0]
     return (
         <div id='infocard-body'>
             <div id='go-back-button' onClick={props.onback}>
@@ -17,12 +18,12 @@ const Infocardgenerate = (props) => {
                         賣
                     </div>
                     <div id='item-type'>
-                        木材類
+                        {Infos.type}
                     </div>
-                    <img src={GoodStoremark} alt='goodstoremark' id='good-store-mark' visibility='visible' />
+                    <img src={GoodStoremark} alt='goodstoremark' id='good-store-mark' visibility={Infos.goodstore?'visible':'none'} />
                 </div>
                 <div id='header-id'>
-                    編號：A12345123
+                    編號：{Infos.id}
                 </div>
             </div>
             <div id='item-name-and-follow'>
@@ -79,7 +80,7 @@ const Infocardgenerate = (props) => {
 }
 
 const Infocard = (props) => {
-    return <Infocardgenerate onback={props.onBack} />
+    return <Infocardgenerate onback={props.onBack} Info={props.InfObject} />
 
 }
 

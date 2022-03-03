@@ -2,103 +2,29 @@ import React ,{useState} from "react";
 import goodmark from '../imgs/goodmark.png'
 import './Scrollcard.scss'
 import Infocard from "./Infocard";
+import GetData from "./GetData";
 
 
-const itemlist = [{
-    id : '001',
-    name : 'wood',
-    location : 'taipeiOOXX',
-    type : '木材',
-    size : '1m*2m*3m',
-    state :  'great',
-    postdate : '2021/2/25',
-    price : 50000,
-    imgs : ['img1.jpg','img2.jpg'],
-    goodstore : true
-},{
-    id : '002',
-    name : 'wood',
-    location : 'taipeiOOXX',
-    type : '金屬',
-    size : '1m*2m*3m',
-    state :  'great',
-    postdate : '2021/2/25',
-    price : 50000,
-    imgs : ['img1.jpg','img2.jpg'],
-    goodstore : false
-},{
-    id : '003',
-    name : 'wood',
-    location : 'taipeiOOXX',
-    type : '桌椅',
-    size : '1m*2m*3m',
-    state :  'great',
-    postdate : '2021/2/25',
-    price : 50000,
-    imgs : ['img1.jpg','img2.jpg'],
-    goodstore : true
-},{
-    id : '004',
-    name : 'wood',
-    location : 'taipeiOOXX',
-    type : '3C產品',
-    size : '1m*2m*3m',
-    state :  'great',
-    postdate : '2021/2/25',
-    price : 50000,
-    imgs : ['img1.jpg','img2.jpg'],
-    goodstore : true
-},{
-    id : '005',
-    name : 'wood',
-    location : 'taipeiOOXX',
-    type : '木材',
-    size : '1m*2m*3m',
-    state :  'great',
-    postdate : '2021/2/25',
-    price : 50000,
-    imgs : ['img1.jpg','img2.jpg'],
-    goodstore : false
-}
-]
+
 
 const filtedlist = (filteroption)=>{
-    let tempList = itemlist.slice()
+    let tempList = GetData().slice()
     let resultlist = []
     let filter = filteroption
-
-    const goodstoreprocess = ()=>{
-        filter.splice(filter.indexOf('優質商家'),1);
-        return true
-    }
-
-    const isItgoodstore = filter.includes('優質商家') ? goodstoreprocess() : false
-    tempList.forEach(element=>{
-        // console.log(element.type)
-        if (filter.includes(element.type)){
-            resultlist.push(element);
-            tempList.splice(tempList.indexOf(element),1)
-        }
+    const isItgoodstore = filter.includes('優質商家');
+    resultlist = tempList.filter(element=>{
+        return (
+            filter.includes(element.type) && (!isItgoodstore || element.goodstore===isItgoodstore)
+        )
     })
-
-    if (filter.length===0){
-        resultlist = tempList
-    }
-
-    if (isItgoodstore){
-        resultlist.forEach(element => {
-            if(!element.goodstore){
-                resultlist.splice(resultlist.indexOf(element),1)
-            }
-        })
-    }
-    // console.log(resultlist)
+    // console.log(GetData().filter(element=>element.id=='001'))
+    resultlist.length===0 && (isItgoodstore ? resultlist = tempList.filter(element=>element.goodstore) : resultlist = tempList)
     return resultlist
 }
 
 const Cardgenerate=(props)=>{
     let arr = []
-    const cardlist1 = props.filter
+    const cardlist1 = props.content
     const llist = ()=>{
         cardlist1.forEach(element => {
             arr.push(
@@ -126,7 +52,7 @@ const Cardgenerate=(props)=>{
                     
                 </div>
                 <img id="goodstoremark" src={goodmark} alt='goodmark' hidden={element.goodstore ? '' : 'hide'} />
-                <button id="purchase-button" key={element.id} onClick={props.onClick}>購買</button>
+                <button className="purchase-button" id={element.id} onClick={props.onClick}>購買</button>
             </div>)
         });
     }
@@ -136,18 +62,18 @@ const Cardgenerate=(props)=>{
 }
 
 const Scrollcard = (props)=>{
-
     const [showlist , changeShowstate] = useState(true)
+    const [InfObject , setInfObject] = useState([])
     const Filters = props.filter
-    const PurchaseButtonEvent = ()=>{
+    const PurchaseButtonEvent = (e)=>{
+        setInfObject(GetData().filter(element=>element.id===e.target.id))
         changeShowstate(false)
     }
     const InfocardBackEvent = ()=>{
         changeShowstate(true)
     }
-    // console.log(props.filter)
     return (
-        showlist ? <Cardgenerate filter={filtedlist(Filters)} onClick={PurchaseButtonEvent} /> : <Infocard onBack={InfocardBackEvent} />
+        showlist ? <Cardgenerate content={filtedlist(Filters)} onClick={PurchaseButtonEvent}  /> : <Infocard InfObject={InfObject} onBack={InfocardBackEvent} />
     )
 }
 

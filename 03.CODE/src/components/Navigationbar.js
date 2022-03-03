@@ -4,12 +4,10 @@ import React, {useState} from "react";
 
 
 
-const Navbar = () => {
-    const [view , setview] = useState(true);
+const Navbar = (props) => {
+    const [view , setview] = useState(false);
     const viewdiff = view ? {borderRight: '1px solid'} : {borderRight:'none'}  
-    const Clickhandle = ()=>{
-      setview(!view)
-  }    
+    props.borderon && setview(true)
 
     const [navcolor, setnavcolor] = useState("black");
     const colorswitch = navcolor === "black" ? { color: '#000' } : { color: '#FFF' }
@@ -37,7 +35,7 @@ const Navbar = () => {
         </div>
   
         <div id="navright" style={colorswitch}>
-          <div className="NavbarRightBlock" style={viewdiff} ><a style={colorswitch} href="#" onClick={Clickhandle}>需求媒合</a></div>
+          <div className="NavbarRightBlock" style={viewdiff} ><a style={colorswitch} href="#">需求媒合</a></div>
           <div className="NavbarRightBlock" style={viewdiff} ><a style={colorswitch} href="#main02point">關於永續</a></div>
           <div className="NavbarRightBlock" style={viewdiff} ><a style={colorswitch} href="#main03point">媒合流程</a></div>
           <div className="NavbarRightBlock" style={{ border: 'none' }} ><a style={colorswitch} href="#main4point">聯繫我們</a></div>
