@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React ,{useState} from "react";
 import goodmark from '../imgs/goodmark.png'
 import './Scrollcard.scss'
+import Infocard from "./Infocard";
 
 
 const itemlist = [{
@@ -65,7 +66,13 @@ const filtedlist = (filteroption)=>{
     let tempList = itemlist.slice()
     let resultlist = []
     let filter = filteroption
-    const isItgoodstore = filter.includes('優質商家') ? ()=>{filter.splice(filter.indexOf('優質商家'),1); return true} : false
+
+    const goodstoreprocess = ()=>{
+        filter.splice(filter.indexOf('優質商家'),1);
+        return true
+    }
+
+    const isItgoodstore = filter.includes('優質商家') ? goodstoreprocess() : false
     tempList.forEach(element=>{
         // console.log(element.type)
         if (filter.includes(element.type)){
@@ -73,12 +80,25 @@ const filtedlist = (filteroption)=>{
             tempList.splice(tempList.indexOf(element),1)
         }
     })
-    console.log(resultlist)
+
+    if (filter.length===0){
+        resultlist = tempList
+    }
+
+    if (isItgoodstore){
+        resultlist.forEach(element => {
+            if(!element.goodstore){
+                resultlist.splice(resultlist.indexOf(element),1)
+            }
+        })
+    }
+    // console.log(resultlist)
     return resultlist
 }
 
-function Cardgenerate(cardlist1){
+const Cardgenerate=(props)=>{
     let arr = []
+    const cardlist1 = props.filter
     const llist = ()=>{
         cardlist1.forEach(element => {
             arr.push(
@@ -106,7 +126,7 @@ function Cardgenerate(cardlist1){
                     
                 </div>
                 <img id="goodstoremark" src={goodmark} alt='goodmark' hidden={element.goodstore ? '' : 'hide'} />
-                <button id="purchase-button" key={element.id}>購買</button>
+                <button id="purchase-button" key={element.id} onClick={props.onClick}>購買</button>
             </div>)
         });
     }
@@ -117,12 +137,18 @@ function Cardgenerate(cardlist1){
 
 const Scrollcard = (props)=>{
 
-
+    const [showlist , changeShowstate] = useState(true)
     const Filters = props.filter
-    filtedlist(Filters)
+    const PurchaseButtonEvent = ()=>{
+        changeShowstate(false)
+    }
+    const InfocardBackEvent = ()=>{
+        changeShowstate(true)
+    }
     // console.log(props.filter)
-    const lista = Cardgenerate(itemlist)
-    return (lista)
+    return (
+        showlist ? <Cardgenerate filter={filtedlist(Filters)} onClick={PurchaseButtonEvent} /> : <Infocard onBack={InfocardBackEvent} />
+    )
 }
 
 export default Scrollcard;
