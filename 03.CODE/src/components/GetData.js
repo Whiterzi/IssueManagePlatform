@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const itemlist = [{
     id : '001',
@@ -13,40 +13,40 @@ const itemlist = [{
     goodstore : true
 },{
     id : '002',
-    name : 'wood',
+    name : 'metal01',
     location : 'taipeiOOXX',
     type : '金屬',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 2000,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : false
 },{
     id : '003',
-    name : 'wood',
+    name : 'chair01',
     location : 'taipeiOOXX',
     type : '桌椅',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 500,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : true
 },{
     id : '004',
-    name : 'wood',
+    name : 'phone02',
     location : 'taipeiOOXX',
     type : '3C產品',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 150000,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : true
 },{
     id : '005',
-    name : 'wood',
+    name : 'treeA',
     location : 'taipeiOOXX',
     type : '木材',
     size : '1m*2m*3m',
@@ -57,35 +57,35 @@ const itemlist = [{
     goodstore : false
 },{
     id : '006',
-    name : 'wood',
+    name : 'computer04',
     location : 'taipeiOOXX',
     type : '3C產品',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 350000,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : false
 },{
     id : '007',
-    name : 'wood',
+    name : 'tv01',
     location : 'taipeiOOXX',
     type : '3C產品',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 4000,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : false
 },{
     id : '008',
-    name : 'wood',
+    name : '3ccc',
     location : 'taipeiOOXX',
     type : '3C產品',
     size : '1m*2m*3m',
     state :  'great',
     postdate : '2021/2/25',
-    price : 50000,
+    price : 90,
     imgs : ['img1.jpg','img2.jpg'],
     goodstore : false
 }

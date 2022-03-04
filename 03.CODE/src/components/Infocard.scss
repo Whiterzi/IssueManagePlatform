@@ -53,6 +53,11 @@
                 width: 50px;
                 height: 50px;
             }
+            #good-store-mark-hidden{
+                width: 50px;
+                height: 50px;
+                visibility: hidden;
+            }
         }
         #header-id{
             height: 100%;
@@ -92,7 +97,7 @@
         #price{
             font-size: 40px;
         }
-        #purchase-button{
+        .purchase-button{
             height: 40px;
             width: 350px;
             background-color: #007bff;
@@ -137,9 +142,14 @@
                 }
             }
             #basic-info{
-                height: 70%;
+                height: 71%;
                 width: 100%;
                 padding: 5px;
+                p{
+                    padding: 5px;
+                    margin: 0;
+                    margin-bottom: 6px;
+                }
                 #basic-info-title{
                     color: gray;
                     width: 100%;
@@ -166,6 +176,21 @@
                 height: 90%;
                 margin-top: 3px;
                 background-color: #c4c4c4;
+                position: relative;
+                p{
+                    margin: 0;
+                    padding: 5px;
+                    margin-bottom: 2px;
+                }
+                button{
+                    background-color: black;
+                    color: white;
+                    border-radius: 5px;
+                    border: none;
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                }
             }
         }
     }

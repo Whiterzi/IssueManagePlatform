@@ -7,12 +7,14 @@ import Sidebar from "../../components/Sidebar";
 import { ScrollPanel } from 'primereact/scrollpanel';
 import Scrollcard from "../../components/Scrollcard";
 import Filterchips from "../../components/Filterchips";
-
+import Matchconfirm from "../../components/Matchconfirm";
 
 
 const GreenMatchList = ()=>{
     const [SidebarState , setSidebarState] = useState("Init")
     const [Filteroption , setFilteroption] = useState([]);
+    const [Popup , setPopup] =useState(false);
+    const [PopupID , setPopupID] =useState();
     const openSidebar = ()=>{
         setSidebarState(!SidebarState)
     }
@@ -34,10 +36,17 @@ const GreenMatchList = ()=>{
         setFilteroption(tempFilteroption)
     }
 
-    
+    const Callpopup = (e)=>{
+        setPopupID(e.target.id)
+        setPopup(true)        
+    }
+    const CallPopoff = ()=>{
+        setPopup(false)
+    }
 
     return( 
         <>
+        <Matchconfirm enable={Popup} popup={Callpopup} popoff={CallPopoff} popid={PopupID}/>
         <Navbar borderon={false}/>
         <div id="navbar-background"></div>
         <div id="frame">
@@ -76,7 +85,7 @@ const GreenMatchList = ()=>{
                         <div id="frame-body-map"></div>
                         <div id="frame-body-list">
                             <ScrollPanel id="scrollpanel">
-                                <Scrollcard filter={Filteroption} />
+                                <Scrollcard filter={Filteroption} popup={Callpopup} />
                             </ScrollPanel>
                         </div>
                     </div>

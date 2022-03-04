@@ -4,6 +4,7 @@ import backarrow from '../imgs/Backarrow.png'
 import GoodStoremark from '../imgs/GoodStoreMark.png'
 import followheart from '../imgs/addfollow.png'
 
+
 const Infocardgenerate = (props) => {
     const Infos = props.Info[0]
     return (
@@ -20,7 +21,7 @@ const Infocardgenerate = (props) => {
                     <div id='item-type'>
                         {Infos.type}
                     </div>
-                    <img src={GoodStoremark} alt='goodstoremark' id='good-store-mark' visibility={Infos.goodstore?'visible':'none'} />
+                    <img src={GoodStoremark} alt='goodstoremark' id={Infos.goodstore?'good-store-mark':'good-store-mark-hidden'} />
                 </div>
                 <div id='header-id'>
                     編號：{Infos.id}
@@ -28,7 +29,7 @@ const Infocardgenerate = (props) => {
             </div>
             <div id='item-name-and-follow'>
                 <div id='item-name'>
-                    優質木頭
+                    {Infos.name}
                 </div>
                 <img src={followheart} alt='heart' />
             </div>
@@ -37,9 +38,9 @@ const Infocardgenerate = (props) => {
             </div>
             <div id='price-and-purchase'>
                 <div id='price'>
-                    $  {3000}
+                    $  {Infos.price}
                 </div>
-                <button id='purchase-button'>
+                <button className='purchase-button' id={Infos.id} onClick={props.popup}>
                     購買
                 </button>
             </div>
@@ -61,7 +62,9 @@ const Infocardgenerate = (props) => {
                             基本資訊
                         </div>
                         <div id='basic-info-description'>
-
+                            <p>● 賣方 {}</p>
+                            <p>● 上架日期 {Infos.postdate}</p>
+                            <p>● 物品所在地 {Infos.location}</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +73,13 @@ const Infocardgenerate = (props) => {
                         規格與內容
                     </div>
                     <div id='spec-content'>
-
+                        <p>● 尺寸(長*寬*高)：{Infos.size}</p>
+                        <p>● 總重：{Infos.size}</p>
+                        <p>● 狀態：{Infos.state}</p>
+                        <p>● 規格詳述：{}</p>
+                        <button id='asking-button'>
+                            我要問賣家
+                        </button>
                     </div>
 
                 </div>
@@ -80,7 +89,11 @@ const Infocardgenerate = (props) => {
 }
 
 const Infocard = (props) => {
-    return <Infocardgenerate onback={props.onBack} Info={props.InfObject} />
+
+
+    return(
+        <Infocardgenerate onback={props.onBack} Info={props.InfObject} popup={props.popup} /> 
+    )
 
 }
 

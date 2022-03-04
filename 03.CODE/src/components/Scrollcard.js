@@ -73,7 +73,7 @@ const Scrollcard = (props)=>{
         changeShowstate(true)
     }
     return (
-        showlist ? <Cardgenerate content={filtedlist(Filters)} onClick={PurchaseButtonEvent}  /> : <Infocard InfObject={InfObject} onBack={InfocardBackEvent} />
+        showlist ? <Cardgenerate content={filtedlist(Filters)} onClick={PurchaseButtonEvent}  /> : <Infocard InfObject={InfObject} onBack={InfocardBackEvent} popup={props.popup} />
     )
 }
 
